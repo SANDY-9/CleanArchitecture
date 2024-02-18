@@ -36,7 +36,7 @@ android {
 
 dependencies {
 
-    project(":domain")
+    implementation(project(":domain"))
 
     //Dagger-Hilt
     implementation("com.google.dagger:hilt-android:2.44")
