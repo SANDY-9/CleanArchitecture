@@ -26,5 +26,5 @@ object DataModule {
 
     @Provides
     @Singleton
-    fun provideCoinRepository(api: CoinPaprikaApi) = CoinRepositoryImpl(api)
+    fun provideCoinRepository(api: CoinPaprikaApi): CoinRepository = CoinRepositoryImpl(api)
 }
