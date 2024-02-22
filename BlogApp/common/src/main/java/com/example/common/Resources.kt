@@ -1,14 +1,14 @@
 package com.example.common
 
-sealed class Resources<T> (
+sealed class Resource<T> (
     val data: T? = null,
     val message: String? = null
 ) {
 
-    class Success<T>(data: T?): Resources<T>(data = data)
+    class Success<T>(data: T?): Resource<T>(data = data)
 
-    class Error<T>(message: String?): Resources<T>()
+    class Error<T>(message: String?): Resource<T>()
 
-    class Loading<T>(message: String?): Resources<T>(message = message)
+    class Loading<T>(message: String?): Resource<T>(message = message)
 
 }

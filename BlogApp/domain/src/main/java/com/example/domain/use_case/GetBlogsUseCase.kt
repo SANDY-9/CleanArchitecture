@@ -1,6 +1,6 @@
 package com.example.domain.use_case
 
-import com.example.common.Resources
+import com.example.common.Resource
 import com.example.domain.model.Blog
 import com.example.domain.repository.GetBlogsRepository
 import kotlinx.coroutines.flow.Flow
@@ -11,13 +11,13 @@ class GetBlogsUseCase @Inject constructor(
     private val getBlogsRepository: GetBlogsRepository
 ) {
 
-    suspend operator fun invoke(): Flow<Resources<List<Blog>>> = flow {
-        emit(Resources.Loading(null))
+    operator fun invoke(): Flow<Resource<List<Blog>>> = flow {
+        emit(Resource.Loading(null))
         try {
             val response = getBlogsRepository.getBlogs()
-            emit(Resources.Success(data = response))
+            emit(Resource.Success(data = response))
         } catch (e: Exception) {
-            emit(Resources.Error("Network Error"))
+            emit(Resource.Error("Network Error"))
         }
     }
 
