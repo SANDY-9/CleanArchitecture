@@ -1,6 +1,7 @@
 package com.example.domain.di
 
 import com.example.domain.repository.GetBlogsRepository
+import com.example.domain.repository.GetPagerBlogsRepository
 import com.example.domain.use_case.GetBlogsUseCase
 import dagger.Module
 import dagger.Provides
@@ -17,4 +18,5 @@ object DomainModule {
     fun provideGetBlogsUseCase(getBlogsRepository: GetBlogsRepository): GetBlogsUseCase {
       return GetBlogsUseCase(getBlogsRepository)
     }
+
 }
