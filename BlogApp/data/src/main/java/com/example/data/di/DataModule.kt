@@ -1,11 +1,17 @@
-package com.example.data.network.di
+package com.example.data.di
 
+import android.content.Context
+import androidx.room.RoomDatabase
+import com.example.common.Constants.BASE_URL
 import com.example.data.network.ApiService
 import com.example.data.repository.GetBlogsRepositoryImpl
+import com.example.data.room.BlogDAO
+import com.example.data.room.BlogDatabase
 import com.example.domain.repository.GetBlogsRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -19,7 +25,7 @@ object DataModule {
     @Provides
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("")
+            .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
@@ -34,6 +40,18 @@ object DataModule {
     @Provides
     fun provideGetBlogsRepository(apiService: ApiService): GetBlogsRepository {
         return GetBlogsRepositoryImpl(apiService)
+    }
+
+    @Singleton
+    @Provides
+    fun provideDatabase(@ApplicationContext context: Context): BlogDatabase {
+        return BlogDatabase.getInstance(context)
+    }
+
+    @Singleton
+    @Provides
+    fun provideDAO(blogDatabase: BlogDatabase): BlogDAO {
+        return blogDatabase.getBlogDAO()
     }
 
 }
