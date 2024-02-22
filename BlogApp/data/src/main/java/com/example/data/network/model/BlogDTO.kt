@@ -5,17 +5,17 @@ import com.google.gson.annotations.SerializedName
 
 data class BlogDTO(
     @SerializedName("id")
-    val id: String,
+    val id: String?,
     @SerializedName("image")
-    val image: String,
+    val image: String?,
     @SerializedName("likes")
-    val likes: Int,
+    val likes: Int?,
     @SerializedName("owner")
-    val owner: OwnerDTO,
+    val owner: OwnerDTO?,
     @SerializedName("publishDate")
-    val publishDate: String,
+    val publishDate: String?,
     @SerializedName("tags")
-    val tags: List<String>,
+    val tags: List<String>?,
     @SerializedName("text")
-    val text: String
+    val text: String?
 )

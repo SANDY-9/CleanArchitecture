@@ -5,11 +5,11 @@ import com.google.gson.annotations.SerializedName
 
 data class BlogsDTO(
     @SerializedName("data")
-    val `data`: List<BlogDTO>,
+    val `data`: List<BlogDTO>?,
     @SerializedName("limit")
-    val limit: Int,
+    val limit: Int?,
     @SerializedName("page")
-    val page: Int,
+    val page: Int?,
     @SerializedName("total")
-    val total: Int
+    val total: Int?
 )
