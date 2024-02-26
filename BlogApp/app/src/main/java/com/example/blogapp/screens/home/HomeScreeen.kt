@@ -1,21 +1,18 @@
 package com.example.blogapp.screens.home
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -58,16 +55,19 @@ fun HomeScreen(navController: NavController, viewModel: HomeViewModel = hiltView
             }
         }*/
         items(list.itemCount) { index ->
-            PostItem(list[index]!!)
+            PostItem(list[index]!!) {
+                navController.navigate("details/$it")
+            }
         }
     }
 
 }
 
 @Composable
-fun PostItem(blog: Blog) {
+fun PostItem(blog: Blog, l:(String)-> Unit) {
     Column(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth()
+            .clickable { l.invoke(blog.id) },
         verticalArrangement = Arrangement.Center
     ) {
 
@@ -78,7 +78,7 @@ fun PostItem(blog: Blog) {
             verticalAlignment = Alignment.CenterVertically
         ) {
 
-            CircularImage(50.0, 50.0, 25.0, blog.owner.picture)
+            CircularImage(width = 50.0, height = 50.0, radius = 25.0, imageUrl = blog.owner.picture)
 
             Spacer(modifier = Modifier.width(6.dp))
 

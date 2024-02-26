@@ -13,6 +13,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.blogapp.navigation.NavigationItem
+import com.example.blogapp.screens.details.DetailsScreen
 import com.example.blogapp.screens.home.HomeScreen
 import com.example.blogapp.ui.theme.BlogAppTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -36,6 +37,9 @@ class MainActivity : ComponentActivity() {
                         ) {
                             composable(NavigationItem.Home.route) {
                                 HomeScreen(navController)
+                            }
+                            composable(NavigationItem.DetailsScreen.route) {
+                                DetailsScreen()
                             }
                         }
 
