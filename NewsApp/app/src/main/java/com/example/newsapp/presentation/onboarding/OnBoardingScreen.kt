@@ -18,7 +18,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.newsapp.presentation.Dimensions.MediumPadding2
 import com.example.newsapp.presentation.Dimensions.PageIndicatorWidth
 import com.example.newsapp.presentation.common.NewsButton
@@ -29,7 +29,9 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun OnboardingScreen() {
+fun OnBoardingScreen(
+    event: (OnBoardingEvent) -> Unit
+) {
 
     Column(modifier = Modifier.fillMaxSize()) {
         val pagerState = rememberPagerState(initialPage = 0) {
@@ -87,8 +89,8 @@ fun OnboardingScreen() {
                     text = buttonState.value[1],
                     onClick = {
                         scope.launch {
-                            if(pagerState.currentPage == 1) {
-                                //TODO: Navigate to Home Screen
+                            if(pagerState.currentPage == pages.size - 1) {
+                                event(OnBoardingEvent.SaveAppEntry)
                             } else {
                                 pagerState.animateScrollToPage(
                                     page = pagerState.currentPage + 1
