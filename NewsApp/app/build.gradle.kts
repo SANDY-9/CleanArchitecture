@@ -54,6 +54,10 @@ android {
 
 dependencies {
 
+    implementation(project(":common"))
+    implementation(project(":data"))
+    implementation(project(":domain"))
+
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
     implementation("androidx.activity:activity-compose:1.8.2")
@@ -104,7 +108,7 @@ dependencies {
 
     //Paging 3
     val paging_version = "3.2.1"
-    implementation("androidx.paging:paging-runtime:$paging_version")
+    implementation("androidx.paging:paging-runtime-ktx:$paging_version")
     implementation("androidx.paging:paging-compose:3.3.0-alpha03")
 
     //Room
