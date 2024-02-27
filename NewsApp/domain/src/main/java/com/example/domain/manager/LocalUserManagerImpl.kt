@@ -1,4 +1,4 @@
-package com.example.data.manager
+package com.example.domain.manager
 
 import android.content.Context
 import androidx.datastore.core.DataStore
@@ -6,7 +6,6 @@ import androidx.datastore.preferences.core.*
 import androidx.datastore.preferences.preferencesDataStore
 import com.example.common.Constants
 import com.example.common.Constants.USER_SETTINGS
-import com.example.domain.manager.LocalUserManager
 import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 

@@ -1,9 +1,9 @@
 package com.example.domain.di
 
 import com.example.domain.manager.LocalUserManager
-import com.example.domain.use_cases.AppEntryUseCases
-import com.example.domain.use_cases.ReadAppEntry
-import com.example.domain.use_cases.SaveAppEntry
+import com.example.domain.usecases.app_entry.AppEntryUseCases
+import com.example.domain.usecases.app_entry.ReadAppEntry
+import com.example.domain.usecases.app_entry.SaveAppEntry
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
