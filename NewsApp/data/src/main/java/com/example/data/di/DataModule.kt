@@ -36,6 +36,8 @@ object DataModule {
             .create(NewsApi::class.java)
     }
 
+    @Singleton
+    @Provides
     fun provideNewsRepository(api: NewsApi): NewsRepository {
         return NewsRepositoryImpl(api)
     }
